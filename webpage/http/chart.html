@@ -1,0 +1,33 @@
+<html>
+ <head>
+  <link rel='stylesheet' href='css/fooflow.css'>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+ </head>
+ <body>
+
+  <form>
+    <b>Sensor: </b><label id="sensTemp">0.0</label>
+    <b>Setpoint: </b><label id="setpoint">0.0</label>
+    <b>Kp: </b><label id="pidKp">0.0</label>
+    <b>Ki: </b><label id="pidKi">0.0</label>
+    <b>Kd: </b><label id="pidKd">0.0</label>
+    <br>
+    Process Timer  <input type='text' id='processTimer' size='4' maxlength='4'/>
+    Reflow Timer  <input name='processReflowTimer' type='text' id='textfield13' size='4' maxlength='4'/><br>
+    Agressive Seconds  <input type='text' id='agressivness' size='2' maxlength='2'/>
+    Hysteresis  <input type='text' id='tempHysterisis' size='1' maxlength='1'/><br>
+    <br>
+    <button type=button id="startPreheat">Preheat hotplate</button>
+    <button type=button id="startReflow">Start reflow</button>
+    <button type=button id="stopReflow">Stop</button>
+  </form>
+
+  <div class="chart-container">
+    <canvas id='reflowPlot' width='800' height='400'></canvas>
+  </div>
+
+  <script type='text/javascript' src='js/chart.js'>
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+<title>fooFlow Process Configuration</title>
+  <link rel='stylesheet' href='css/fooflow.css'>
+</head>
+<body>
+<form action='' method='post' name='form1' target='_self' id='form1'>
+  <h1>Configure Profile</h2>
+  <h2>Select Solder Compounde</h2>
+  <p>
+    <label for='select'></label>
+    <select name='select' size='4' id='select'>
+       <option value='1234' selected>" + String(reflowProfile[0].name) + "</option>
+       <option value='1234'>" + String(reflowProfile[1].name) + "</option>
+    </select>
+  </p>
+  <h2>Modify Profile</h2>
+  <table width='100%' border='1' cellspacing='0' cellpadding='0'>
+    <tr>
+      <td align='center'>Initial Ramp</td>
+      <td align='center'>Pre Heat</td>
+      <td align='center'>Ramp to Peak</td>
+      <td align='center'>Reflow</td>
+      <td align='center'>Cooling</td>
+      <td align='center'>Finish</td>
+    </tr>
+    <tr>
+      <td><label for='ramp_sec'></label>
+      <input name='ramp_sec' type='text' id='ramp_sec' size='3' maxlength='3' />
+      Sec <input name='ramp_temp' type='text' id='ramp_temp' size='3' maxlength='3' /> &deg;Celsius </td>
+      <td><input name='pre_sec' type='text' id='pre_sec' size='3' maxlength='3' /> Sec
+  <input name='pre_temp' type='text' id='textfield4' size='3' maxlength='3' /> &deg;Celsius </td>
+      <td><input name='ramppeak_sec' type='text' id='textfield5' size='3' maxlength='3' /> Sec
+  <input name='ramppeak_temp' type='text' id='textfield6' size='3' maxlength='3' /> &deg;Celsius </td>
+      <td><input name='reflow_sec' type='text' id='textfield7' size='3' maxlength='3' /> Sec
+  <input name='reflow_temp' type='text' id='textfield8' size='3' maxlength='3' /> &deg;Celsius </td>
+      <td><input name='cool_sec' type='text' id='textfield9' size='3' maxlength='3' /> Sec
+  <input name='cool_temp' type='text' id='textfield10' size='3' maxlength='3' /> &deg;Celsius </td>
+      <td><input name='finish_sec' type='text' id='textfield11' size='3' maxlength='3' /> Sec
+  <input name='finish_temp' type='text' id='textfield12' size='3' maxlength='3' /> &deg;Celsius </td>
+    </tr>
+  </table>
+  <p>
+    Reset Form
+    <input type='reset' name='Reset' id='Reset' value='Reset' />
+  Save for this session
+    <input type='submit' name='Save' id='button' value='Save' />
+  Save for as process defaults
+    <input type='submit' name='button' id='button2' value='Apply' />
+  </p>
+</form>
+
+<form action='/process/conf/save/global' method='post' name='form1' target='_self' id='form1'>
+  <h1>Configure System</h2>
+  <h2>Set Global PID Values</h2>
+  <p>Kp
+    <input name='Kp' type='text' id='textfield13' size='5' maxlength='5' value='" + String(Kp) + "'/>
+  </p>
+  <p>Ki
+    <input name='Ki' type='text' id='textfield16' size='5' maxlength='5' value='" + String(Ki) + "'/>
+  </p>
+  <p>Kd
+    <input name='Kd' type='text' id='textfield14' size='5' maxlength='5' value='" + String(Kd) + "'/>
+  </p>
+  <p>For more information, see the Wikipedia article on <a href='https://en.wikipedia.org/wiki/PID_controller' target='new'>PID Controller</a>.</p>
+  <h2>Set Oven Start Point</h2>
+  <p>
+    <input name='startup_sec' type='text' id='textfield15' size='3' maxlength='3' value=" + String(startup_sec) + " /> Sec
+<input name='startup_temp' type='text' id='textfield17' size='3' maxlength='3' value=" + String(startup_temp) + " />
+&deg;Celsius </p>
+  <p>Before beginning the reflow profile, heat the oven to a known start point and maintain it for a few seconds. This allows you to monitor the oven's performance prior to extreme temepratures. If the oven is unable to maintain the start temperature, the process will be aborted.</p>
+  <h2>Safe Temperature</h2>
+  <p>
+    <input name='safeTemperature' type='text' id='textfield15' size='3' maxlength='3' value=" + String(safeTemperature) + " /> Sec
+  The reflow process can't be started unless the oven is below the safe temperature.<p>
+  <h2>Process Agressiveness</h2>
+  <p>
+    <input name='processAgressiveness' type='text' id='textfield15' size='3' maxlength='3' value=" + String(processAgressiveness) + " /> Sec
+  At the start of each zone in the reflow profile, be agressive for a few seconds to get close to the upcoming setpoint.<p>
+  <h2>Process Temperature Hysteresis</h2>
+  <p>
+    <input name='processTempHysteresis' type='text' id='textfield15' size='3' maxlength='3' value=" + String(processTempHysteresis) + " /> Sec
+  Temeprature range below set point to accept zone completion.<p>
+  <p>
+    Reset Form
+    <input type='reset' name='Reset' id='Reset' value='Reset' />
+
+  Save for this session
+    <input type='submit' name='Save' id='button' value='Save' />
+
+  Save for as process defaults (wip)
+    <input type='submit' name='button' id='button2' value='Apply' />
+  </p>
+</form>
+  
+<form action='/process/conf/save/global' method='post' name='form1' target='_self' id='form1'>
+  <h1>Reboot</h2>
+  <a href=/restart>Reboot fooFlow</a>
+</form>
+
+</body>
+</html>

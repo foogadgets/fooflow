@@ -16,6 +16,7 @@ SSR connets to Lolin GPIO5 (D1) and GND.
 Clothing iron/Oven connects to SSR.  
 
 ### Install
+Copy src/template_credentials.h to src/credentials.h and add your SSID and Password.  
 Compile source in Microsoft Visual Studio Code with PlatformIO and upload to Lolin.  
 Generate filesystem and upload to Lolin.
 
